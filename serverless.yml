@@ -8,12 +8,11 @@ plugins:
 provider:
   name: aws
   runtime: nodejs12.x
-  region: us-east-1
   memorySize: 256
+  region: us-east-1
   stage: ${opt:stage, 'dev'}
   iamRoleStatements:
     - ${file(iam/SendMailIAM.yml):SendMailIAM}
-    - ${file(iam/MailQueueIAM.yml):MailQueueIAM}
 
 resources:
   Resources:
@@ -24,7 +23,7 @@ functions:
     handler: src/handlers/sendMail.handler
     events:
       - sqs:
-          arn: ${self:custom:mailQueue.arn}
+          arn: ${self:custom.mailQueue.arn}
           batchSize: 1
 
 custom:
