@@ -1,0 +1,1 @@
+# AWS SES notification services
