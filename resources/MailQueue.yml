@@ -3,6 +3,7 @@ MailQueue:
   Properties:
     QueueName: ${self:custom.mailQueue.name}
 
+# This Stores values within the CloudFormation Output resources section
 Outputs:
   MailQueueArn:
     Value: ${self:custom.mailQueue.arn}
